@@ -18,7 +18,11 @@ const listItem = props => {
             strikeState ? styles.strikeItemText : styles.itemText
           }
         >
+          <Text>1 </Text>
+          <Text>x </Text>
+          <Text>
           {props.title}
+          </Text>
         </Text>
       </View>
     </TouchableOpacity>
