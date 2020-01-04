@@ -10,7 +10,7 @@ const listItem = props => {
   return (
     <TouchableOpacity
       onLongPress={props.onDelete.bind(this, props.id)}
-      onPress={setStrikeState(currentState => !currentState)}
+      onPress={() => setStrikeState(!strikeState)}
     >
       <View style={styles.listItem}>
         <Text
@@ -36,12 +36,14 @@ const styles = StyleSheet.create({
   },
   itemText: {
     color: "#333",
-    textAlign: "center"
+    textAlign: "center",
+    fontWeight: 'bold'
   },
   strikeItemText: {
     textDecorationLine: "line-through",
-    color: "#333",
-    textAlign: "center"
+    color: "#cc2900",
+    textAlign: "center",
+    fontWeight: 'normal'
   }
 });
 
