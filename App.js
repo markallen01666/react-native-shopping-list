@@ -1,4 +1,4 @@
-// React Native Mobile Shopping List app 
+// React Native Mobile Shopping List app
 // Mark Allen - 2020
 
 import React, { useState } from "react";
@@ -7,7 +7,9 @@ import { StyleSheet, View, Text, FlatList } from "react-native";
 import ItemAdd from "./components/itemAdd";
 import ListItem from "./components/listItem";
 import ClearButton from "./components/clearButton";
-import TempButton from "./components/tempButton";
+import AddButton from "./components/addButton";
+import InfoButton from "./components/infoButton";
+import ClearAllButton from "./components/clearAllButton";
 
 export default function App() {
   const [ListItems, setListItems] = useState([]);
@@ -29,9 +31,12 @@ export default function App() {
 
   return (
     <View style={styles.screen}>
-      <TempButton></TempButton>
       <Text style={styles.title}>Shopping List</Text>
-      <Text style={styles.instructions}>(short press on item to strikethrough, long press on item to remove it)</Text>
+      <View style={styles.controls}>
+        <AddButton></AddButton>
+        <InfoButton></InfoButton>
+        <ClearAllButton></ClearAllButton>
+      </View>
       <ItemAdd onAddItem={addItemHandler} />
       <ClearButton onClearItems={clearItemsHandler} />
       <View style={styles.itemlist}>
@@ -52,7 +57,9 @@ export default function App() {
 
 const styles = StyleSheet.create({
   screen: {
-    padding: 30
+    flex:1,
+    padding: 30,
+    backgroundColor: "#dcdde1"
   },
   itemlist: {
     marginVertical: 20
@@ -60,12 +67,16 @@ const styles = StyleSheet.create({
   title: {
     textAlign: "center",
     fontWeight: "bold",
-    fontSize: 20,
-    color: "#0066cc"
+    fontSize: 30,
+    color: "#2f3640"
   },
   instructions: {
     textAlign: "center",
     fontStyle: "italic",
     color: "#777"
+  },
+  controls: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   }
 });

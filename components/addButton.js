@@ -10,7 +10,7 @@ const TempButton = props => {
     <TouchableOpacity
     onPress={() => alert("Bang")} onLongPress={() => alert("Boom")} 
     >
-    <Icon name={"chevron-right"} size={30} color="#0a0" reverse={true} />
+    <Icon type='font-awesome' name={"plus"} size={30} color="#44bd32" reverse={true} />
     </TouchableOpacity>
   );
 };

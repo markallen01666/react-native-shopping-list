@@ -1,0 +1,18 @@
+// tempButton - Added to play with 'button' styling through <View />
+// M Allen - 2020
+
+import React from "react";
+import { TouchableOpacity } from "react-native";
+import { Icon } from "react-native-elements";
+
+const TempButton = props => {
+  return (
+    <TouchableOpacity
+    onPress={() => alert("Bang")} onLongPress={() => alert("Boom")} 
+    >
+    <Icon type='font-awesome' name={"trash"} size={30} color="#c23616" reverse={true} />
+    </TouchableOpacity>
+  );
+};
+
+export default TempButton;
