@@ -7,6 +7,7 @@ import { StyleSheet, View, Text, FlatList } from "react-native";
 import ItemAdd from "./components/itemAdd";
 import ListItem from "./components/listItem";
 import ClearButton from "./components/clearButton";
+import TempButton from "./components/tempButton";
 
 export default function App() {
   const [ListItems, setListItems] = useState([]);
@@ -28,6 +29,7 @@ export default function App() {
 
   return (
     <View style={styles.screen}>
+      <TempButton></TempButton>
       <Text style={styles.title}>Shopping List</Text>
       <Text style={styles.instructions}>(short press on item to strikethrough, long press on item to remove it)</Text>
       <ItemAdd onAddItem={addItemHandler} />
