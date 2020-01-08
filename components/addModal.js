@@ -2,25 +2,42 @@
 // M Allen 2020
 
 import React, { useState } from "react";
-import { View, Text, TextInput, StyleSheet, Button, Modal } from "react-native";
-import { Icon } from "react-native-elements";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  Button,
+  Modal,
+  Picker
+} from "react-native";
 
 const AddModal = props => {
   const [enteredItem, setEnteredItem] = useState("");
+  const [quantityChoice, setQuantityChoice] = useState("");
 
   const addFieldHandler = enteredText => {
     setEnteredItem(enteredText);
   };
   const itemAddHandler = () => {
-    props.onAddItem(enteredItem);
+    props.onAddItem(enteredItem + ": " + quantityChoice);
     setEnteredItem("");
+    setQuantityChoice("");
+  };
+  const quantityChoiceHandler = currentChoice => {
+    setQuantityChoice(currentChoice);
   };
 
   return (
     <Modal visible={props.visible} animationType="slide">
       <View style={styles.container}>
         <View style={styles.textContainer}>
-          <Text style={styles.headline}>Add new items to your shopping list</Text>
+          <Text style={styles.headline}>
+            Add new items to your shopping list
+          </Text>
+        </View>
+        <View style={styles.textContainer}>
+          <Text>Item</Text>
         </View>
         <View style={styles.inputContainer}>
           <TextInput
@@ -29,6 +46,21 @@ const AddModal = props => {
             style={styles.input}
             onChangeText={addFieldHandler}
             value={enteredItem}
+            onSubmitEditing={() => {
+              itemAddHandler();
+            }}
+          />
+        </View>
+        <View style={styles.textContainer}>
+          <Text>Amount</Text>
+        </View>
+        <View style={styles.quantityContainer}>
+          <TextInput
+            width="100%"
+            placeholder="Enter quantity"
+            style={styles.input}
+            onChangeText={quantityChoiceHandler}
+            value={quantityChoice}
             onSubmitEditing={() => {
               itemAddHandler();
             }}
@@ -68,6 +100,11 @@ const styles = StyleSheet.create({
     margin: 20,
     backgroundColor: "#dcdde1"
   },
+  quantityContainer: {
+    marginTop: 5,
+    marginBottom: 20,
+    width: "40%"
+  },
   inputContainer: {
     marginTop: 5,
     marginBottom: 5,
@@ -85,7 +122,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: 20
+    marginTop: 5
   },
   button: {
     margin: 10,

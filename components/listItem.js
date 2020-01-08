@@ -18,8 +18,6 @@ const listItem = props => {
             strikeState ? styles.strikeItemText : styles.itemText
           }
         >
-          <Text>1 </Text>
-          <Text>x </Text>
           <Text>
           {props.title}
           </Text>
@@ -33,7 +31,7 @@ const styles = StyleSheet.create({
   listItem: {
     marginVertical: 5,
     padding: 10,
-    backgroundColor: "#e6f2ff",
+    backgroundColor: "#fff",
     borderColor: "#aaa",
     borderWidth: 1,
     borderStyle: "dotted"
