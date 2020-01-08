@@ -5,7 +5,6 @@ import React, { useState } from "react";
 import { StyleSheet, View, Text, FlatList } from "react-native";
 
 // import components
-import ItemAdd from "./components/itemAdd";
 import ListItem from "./components/listItem";
 import AddButton from "./components/addButton";
 import InfoButton from "./components/infoButton";
