@@ -8,7 +8,7 @@ import { Icon } from "react-native-elements";
 const TempButton = props => {
   return (
     <TouchableOpacity
-    onPress={() => alert("Bang")} onLongPress={() => alert("Boom")} 
+    onPress={props.onPress} 
     >
     <Icon type='font-awesome' name={"info"} size={30} color="#192a56" reverse={true} />
     </TouchableOpacity>

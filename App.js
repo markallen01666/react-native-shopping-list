@@ -10,9 +10,11 @@ import ClearButton from "./components/clearButton";
 import AddButton from "./components/addButton";
 import InfoButton from "./components/infoButton";
 import ClearAllButton from "./components/clearAllButton";
+import InfoModal from "./components/infoModal";
 
 export default function App() {
-  const [ListItems, setListItems] = useState([]);
+  const [listItems, setListItems] = useState([]);
+  const [showInfo, setShowInfo] = useState(false);
 
   const addItemHandler = itemTitle => {
     setListItems(currentItems => [
@@ -28,20 +30,24 @@ export default function App() {
   const clearItemsHandler = () => {
     setListItems(currentItems => []);
   };
+  const infoModalHandler = () => {
+    setShowInfo(currentShowInfo => !currentShowInfo)
+  }
 
   return (
     <View style={styles.screen}>
-      <Text style={styles.title}>Shopping List</Text>
       <View style={styles.controls}>
-        <AddButton></AddButton>
-        <InfoButton></InfoButton>
-        <ClearAllButton></ClearAllButton>
+        <AddButton />
+        <InfoButton onPress={infoModalHandler} />
+        <ClearAllButton />
       </View>
+      <InfoModal visible={showInfo} onClose={infoModalHandler} />
       <ItemAdd onAddItem={addItemHandler} />
       <ClearButton onClearItems={clearItemsHandler} />
+      <Text style={styles.title}>Shopping List</Text>
       <View style={styles.itemlist}>
         <FlatList
-          data={ListItems}
+          data={listItems}
           renderItem={itemData => (
             <ListItem
               id={itemData.item.id}
