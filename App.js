@@ -4,6 +4,7 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text, FlatList } from "react-native";
 
+// import components
 import ItemAdd from "./components/itemAdd";
 import ListItem from "./components/listItem";
 import AddButton from "./components/addButton";
@@ -11,12 +12,16 @@ import InfoButton from "./components/infoButton";
 import ClearAllButton from "./components/clearAllButton";
 import InfoModal from "./components/infoModal";
 import ConfirmationModal from "./components/confirmationModal";
+import AddModal from './components/addModal';
 
 export default function App() {
+  // state hooks
   const [listItems, setListItems] = useState([]);
   const [showInfo, setShowInfo] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [showAdd, setShowAdd] = useState(false);
 
+  // state hook handlers
   const addItemHandler = itemTitle => {
     setListItems(currentItems => [
       ...currentItems,
@@ -38,17 +43,20 @@ export default function App() {
   const confirmationModalHandler = () => {
     setShowConfirmation(currentShowConfirmation => !currentShowConfirmation)
   }
+  const addModalHandler = () => {
+    setShowAdd(currentShowAdd => !currentShowAdd)
+  }
 
   return (
     <View style={styles.screen}>
       <View style={styles.controls}>
-        <AddButton />
+        <AddButton onPress={addModalHandler} />
         <InfoButton onPress={infoModalHandler} />
         <ClearAllButton onPress={confirmationModalHandler} />
       </View>
       <InfoModal visible={showInfo} onClose={infoModalHandler} />
       <ConfirmationModal visible={showConfirmation} onClose={confirmationModalHandler} onClearItems={clearItemsHandler} />
-      <ItemAdd onAddItem={addItemHandler} />
+      <AddModal visible={showAdd} onClose={addModalHandler} onAddItem={addItemHandler} />
       <Text style={styles.title}>Shopping List</Text>
       <View style={styles.itemlist}>
         <FlatList
@@ -79,7 +87,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 30,
-    color: "#2f3640"
+    color: "#2f3640",
+    marginTop: 20
   },
   instructions: {
     textAlign: "center",

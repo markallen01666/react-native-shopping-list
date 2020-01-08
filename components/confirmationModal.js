@@ -55,7 +55,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    margin: 20
+    margin: 20,
+    backgroundColor: "#dcdde1"
   },
   infoContainer: {
     justifyContent: "center",

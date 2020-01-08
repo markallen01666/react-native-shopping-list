@@ -71,7 +71,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    margin: 20,
+    backgroundColor: "#dcdde1"
   },
   infoContainer: {
     justifyContent: "center",
