@@ -6,15 +6,16 @@ import { StyleSheet, View, Text, FlatList } from "react-native";
 
 import ItemAdd from "./components/itemAdd";
 import ListItem from "./components/listItem";
-import ClearButton from "./components/clearButton";
 import AddButton from "./components/addButton";
 import InfoButton from "./components/infoButton";
 import ClearAllButton from "./components/clearAllButton";
 import InfoModal from "./components/infoModal";
+import ConfirmationModal from "./components/confirmationModal";
 
 export default function App() {
   const [listItems, setListItems] = useState([]);
   const [showInfo, setShowInfo] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   const addItemHandler = itemTitle => {
     setListItems(currentItems => [
@@ -29,9 +30,13 @@ export default function App() {
   };
   const clearItemsHandler = () => {
     setListItems(currentItems => []);
+    confirmationModalHandler();
   };
   const infoModalHandler = () => {
     setShowInfo(currentShowInfo => !currentShowInfo)
+  }
+  const confirmationModalHandler = () => {
+    setShowConfirmation(currentShowConfirmation => !currentShowConfirmation)
   }
 
   return (
@@ -39,11 +44,11 @@ export default function App() {
       <View style={styles.controls}>
         <AddButton />
         <InfoButton onPress={infoModalHandler} />
-        <ClearAllButton />
+        <ClearAllButton onPress={confirmationModalHandler} />
       </View>
       <InfoModal visible={showInfo} onClose={infoModalHandler} />
+      <ConfirmationModal visible={showConfirmation} onClose={confirmationModalHandler} onClearItems={clearItemsHandler} />
       <ItemAdd onAddItem={addItemHandler} />
-      <ClearButton onClearItems={clearItemsHandler} />
       <Text style={styles.title}>Shopping List</Text>
       <View style={styles.itemlist}>
         <FlatList

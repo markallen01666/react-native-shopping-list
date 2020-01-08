@@ -5,7 +5,6 @@ import React from "react";
 import { View, StyleSheet, Button, Text, Modal } from "react-native";
 import { Icon } from "react-native-elements";
 
-
 const InfoModal = props => {
   return (
     <Modal visible={props.visible} animationType="slide">
@@ -18,16 +17,28 @@ const InfoModal = props => {
           </View>
           <View style={styles.textContainer}>
             <Text style={styles.subhead}>Add an item to the list</Text>
-            <Text>Click on the green 'plus' button</Text>
+            <Text>Click on the green button</Text>
             <View>
-            <Icon type='font-awesome' name={"plus"} size={15} color="#44bd32" reverse={true} />
+              <Icon
+                type="font-awesome"
+                name={"plus"}
+                size={15}
+                color="#44bd32"
+                reverse={true}
+              />
             </View>
           </View>
           <View style={styles.textContainer}>
             <Text style={styles.subhead}>Clear all items</Text>
-            <Text>Click on the red 'trash' button</Text>
+            <Text>Click on the red button</Text>
             <View>
-            <Icon type='font-awesome' name={"trash"} size={15} color="#c23616" reverse={true} />
+              <Icon
+                type="font-awesome"
+                name={"trash"}
+                size={15}
+                color="#c23616"
+                reverse={true}
+              />
             </View>
           </View>
           <View style={styles.textContainer}>
