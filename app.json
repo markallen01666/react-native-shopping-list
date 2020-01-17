@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Shoping List",
+    "name": "Shopping List",
     "slug": "react-native-shopping-list",
     "privacy": "public",
     "sdkVersion": "36.0.0",
@@ -23,8 +23,8 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true
+    "android": {
+      "package": "uk.co.markallenwebdeveloper.shoppinglist"
     }
   }
 }
